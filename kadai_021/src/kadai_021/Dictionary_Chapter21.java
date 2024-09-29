@@ -1,52 +1,36 @@
 package kadai_021;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Dictionary_Chapter21 {
-	public HashMap<String, String> map;
+	public HashMap<String, String> dictionary;
 
 	public Dictionary_Chapter21() {
-		map = new HashMap<>();
+		dictionary = new HashMap<>();
+
+		// 辞書に英単語をセット
+		dictionary.put("apple", "りんご");
+		dictionary.put("peach", "桃");
+		dictionary.put("banana", "バナナ");
+		dictionary.put("lemon", "レモン");
+		dictionary.put("pear", "梨");
+		dictionary.put("kiwi", "キウイ");
+		dictionary.put("strawberry", "いちご");
+		dictionary.put("grape", "ぶどう");
+		dictionary.put("muscat", "マスカット");
+		dictionary.put("cherry", "さくらんぼ");
 	}
 
 	/**
-	 * 辞書に指定の単語を追加
-	 * 繰り返し処理を使い、調べる英単語が辞書に追加されているか判定する
+	 * 辞書に含まれていたら単語の意味を、含まれていなかったらその旨を出力する
+	 * @param words 調べたい英単語の配列
 	 */
-	public void addWordsInMap() {
-		map.put("apple", "りんご");
-		map.put("peach", "桃");
-		map.put("banana", "バナナ");
-		map.put("lemon", "レモン");
-		map.put("pear", "梨");
-		map.put("kiwi", "キウイ");
-		map.put("strawberry", "いちご");
-		map.put("grape", "ぶどう");
-		map.put("muscat", "マスカット");
-		map.put("cherry", "さくらんぼ");
-	}
-
-	/**
-	 * 辞書内に検索ワードが含まれているか返す
-	 * @param word 検索ワード
-	 * @return 検索ワードが含まれていたらtrue
-	 */
-	public Boolean hasWord(String word) {
-		return map.containsKey(word);
-	}
-
-
-	public static void main(String[] args) {
-
-		Dictionary_Chapter21 dictionary = new Dictionary_Chapter21();
-		dictionary.addWordsInMap();
-
-		for(Map.Entry<String, String> entry : dictionary.map.entrySet()) {
-			if(entry.getValue() != null) {
-				System.out.println("Key:" + entry.getKey() + " Value:" + entry.getValue());
+	public void searchWords(String[] keys) {
+		for(String key : keys) {
+			if(dictionary.containsKey(key)) {
+				System.out.println(key + ":" + dictionary.get(key));
 			} else {
-				System.out.println("辞書に存在しません");
+				System.out.println(key + "は辞書に存在しません");
 			}
 		}
 	}
